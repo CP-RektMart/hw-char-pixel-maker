@@ -48,26 +48,28 @@ function App() {
 
   return (
     <div className="grid grid-cols-2 gap-4 p-8">
-      <div>
-        {Array.from({ length: vertical }).map((_, i) => (
-          <div key={i} className="flex">
-            {Array.from({ length: horizontal }).map((_, j) => (
-              <div
-                key={j}
-                className={`w-8 h-8 border border-gray-300 cursor-pointer ${
-                  pixel[i][j] === 1 ? "bg-black" : ""
-                }`}
-                onClick={() => {
-                  setPixel((prevPixel) => {
-                    const newPixel = prevPixel.map((row) => [...row]); // Create a deep copy
-                    newPixel[i][j] = newPixel[i][j] === 0 ? 1 : 0; // Toggle value
-                    return newPixel;
-                  });
-                }}
-              ></div>
-            ))}
-          </div>
-        ))}
+      <div className="flex justify-center items-center">
+        <div>
+          {Array.from({ length: vertical }).map((_, i) => (
+            <div key={i} className="flex">
+              {Array.from({ length: horizontal }).map((_, j) => (
+                <div
+                  key={j}
+                  className={`w-8 h-8 border border-gray-300 cursor-pointer ${
+                    pixel[i][j] === 1 ? "bg-black" : ""
+                  }`}
+                  onClick={() => {
+                    setPixel((prevPixel) => {
+                      const newPixel = prevPixel.map((row) => [...row]); // Create a deep copy
+                      newPixel[i][j] = newPixel[i][j] === 0 ? 1 : 0; // Toggle value
+                      return newPixel;
+                    });
+                  }}
+                ></div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="space-y-2">
         <div>
